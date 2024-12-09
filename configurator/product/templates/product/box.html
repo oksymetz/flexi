@@ -1,0 +1,28 @@
+{% extends 'company/base.html' %}
+{% block content %}
+{% load static %}
+
+
+<div class="container" style="padding: 5%;">
+    <div class="container" style="text-align: center; padding-bottom: 3%;">
+        <h2 class="h2">Collactable Boxes</h2>
+    </div>
+    <div class="row container">
+        <div class="container col-6" style="padding: 5%;">
+            <img src="{% static 'product/box.png' %}" class="rounded float-start" style="align-content: center; width: 100%;">
+        </div>
+        <div class="container col-4" style="padding-top: 5%; padding-bottom: 5%; align-content: center; ">
+            <form>
+                <div class="form-group">
+                    <label class="label" for="quantityBoxes">Order boxes</label>
+                    <input type="int" class="form-control" id="quantityBoxes" placeholder="Enter quantity">
+                </div>
+            </form>
+            <div class="container", style="padding-top: 10%; width: 40%; margin-left: auto; margin-right: auto;">
+                <button type="button" class="btn btn-save">Save Order</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
