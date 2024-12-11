@@ -5,13 +5,61 @@
     <h1>Flexi - HOME</h1>
 </header> -->
 <!-- <main> -->
-    <div class="container" style="padding: 15%">
+    <div class="container" style="padding: 15% 15%; width:90%;">
         <div class="container">
-            <h2 style="font-size: 50px; color: #7A9E7E; font-weight: 600;">FlexiTable</h2>
+            <h2 style="font-size: 50px; color: #7A9E7E; font-weight: 600; padding-left: 5%;">Flexi</h2>
         </div>
         <div class="container" style="text-align: left;">
-            <h3>Unfold your space – the table that adapts to your needs.</h3>
+            <h3 style="padding-top: 15px;">The ultimate space-saving solution for your home.</h3>
+            <p style="font-size: 24px; color: #A4755180; margin-top: 15px;">
+                Flexi offers innovative designs that combine sleek aesthetics with practical functionality. From adaptable tables to smart storage solutions, Flexi redefines how you interact with your living space.
+            </p>
+            <a class="btn btn-save" href="{% url 'product:index' %}">explore now</a>
+        </div>
+        
+    </div>
+
+
+    <!-- Storytelling Section -->
+    <div class="container" style="padding: 5% 15%; width:90%;">
+        <h2 class="h2" style="font-size: 36px; padding-left: 5%;">Our Story</h2>
+        <p class="text" style="font-size: 24px; color: #A4755180; margin-top: 15px;">
+            Flexi was born from the desire to make modern living simpler, smarter, and more beautiful.
+            Inspired by small-space lifestyles and the need for adaptable furniture, we crafted a collection that evolves with you.
+            Our mission is to merge minimalism with functionality, creating pieces that not only look stunning but also maximize every inch of your space.
+            Whether you're hosting a dinner party or working from home, Flexi adapts to meet your needs.
+        </p>    
+    </div>
+
+    <!-- Benefits Section -->
+    <div class="container" style="padding: 5% 15%; align-items: center;">
+        <h2 style="font-size: 40px; color: #7A9E7E; font-weight: 600; padding-left: 5%;">Why Choose Flexi?</h2>
+        <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 20px;">
+            <div style="width: 200px; text-align: left; border: 1px solid #A47551; padding: 20px; border-radius: 8px;">
+                <h4 style="color: #7A9E7E; font-size: 24px;">Adaptable</h4>
+                <p>Designed for dynamic spaces, Flexi furniture adjusts to your needs effortlessly.</p>
+            </div>
+            <div style="width: 200px; text-align: left; border: 1px solid #A47551; padding: 20px; border-radius: 8px;">
+                <h4 style="color: #7A9E7E; font-size: 24px;">Stylish</h4>
+                <p>Minimalist aesthetics that seamlessly blend with any decor.</p>
+            </div>
+            <div style="width: 200px; text-align: left; border: 1px solid #A47551; padding: 20px; border-radius: 8px;">
+                <h4 style="color: #7A9E7E; font-size: 24px;">Space-saving</h4>
+                <p>Perfect for modern apartments and multifunctional living areas.</p>
+            </div>
+            <div style="width: 200px; text-align: left; border: 1px solid #A47551; padding: 20px; border-radius: 8px;">
+                <h4 style="color: #7A9E7E; font-size: 24px;">Durable</h4>
+                <p>Built to last with premium, eco-friendly materials.</p>
+            </div>
         </div>
     </div>
 
+    <!-- Call-to-Action Section -->
+    <div class="container" style="padding: 5% 15% 10% 15%; width: 90%;">
+        <h2 class="h2" style="font-size: 40px; padding-left: 5%;">Unfold Your Space</h2>
+        <p style="font-size: 24px; color: #A4755180">
+            Reimagine your home with Flexi, the furniture that adapts to your lifestyle.
+        </p>
+        <a class="btn btn-save" href="{% url 'product:index' %}">shop now</a>
+    </div>
 {% endblock %}

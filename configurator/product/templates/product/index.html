@@ -4,16 +4,22 @@
 <!-- <header>
     <h1>Products</h1>
 </header> -->
-<div class="container" style="padding: 5%;">
+<div class="container" style="padding: 15%;">
     <div class="container" style="text-align: center; padding-bottom: 3%;">
         <h2 class="h2">Products</h2>
     </div>
     <div class="container row">
         <div class="col-6" style="text-align: center;">
-            <h3><a class="h2" href="{% url 'product:box' %}">Connectable Boxes</a></h3>
+            <h3><a class="h2" href="{% url 'product:box' %}" style="font-size: 30px;">Connectable Boxes</a></h3>
+            <p style="font-size: 24px; color: #A4755180; padding-top: 20px;">
+                Information about our boxes
+            </p>
         </div>
         <div class="col-6" style="text-align: center;">
-            <h3><a class="h2" href="{% url 'product:configurator' %}">Table Configurator</a></h3>
+            <h3><a class="h2" href="{% url 'product:configurator' %}" style="font-size: 30px;">Table Configurator</a></h3>
+            <p style="font-size: 24px; color: #A4755180; padding-top: 20px;">
+                Information about our table
+            </p>
         </div>
     </div>
 </div>
