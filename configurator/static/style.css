@@ -15,13 +15,17 @@ body, html {
 /* Header */
 .header {
     width: 60%;
-    /* height: 130px; */
+    height: 100%;/* height: 130px; */
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 45px 70px;
     background: #fcf8f300;
     position: sticky !important;
+}
+
+.dropdown-menu {
+    color: #A47551;
 }
 
 .h2 {

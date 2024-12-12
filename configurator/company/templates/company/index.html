@@ -1,23 +1,18 @@
 {% extends 'company/base.html' %}
 {% block content %}
 
-<!-- <header>
-    <h1>Flexi - HOME</h1>
-</header> -->
 
 <!-- backgorund-->
-<div class="hero-section" style="padding-top: 5%; margin: 10%;">
-    <img src="../../../static/company/pictures/background.png" class="rounded float-start" style="width: 100%; object-fit: cover;">
-    <div class="text-container" style="position: absolute; top: 80%; left: 40%; transform: translateY(-50%); max-width: 400px;">
-        <h3 style="font-size: 24px; color: #7A9E7E; margin-bottom: 15px;">The ultimate space-saving solution for your home.</h3>
-        <p style="font-size: 18px; color: #A4755180; text-align: justify; margin-bottom: 20px;">
+<div class="container" style="background: rgba(0,0,0, 1) url('../../../static/company/pictures/background.png')  no-repeat center/cover;padding: 5% 15%; width:90%;">
+    <h3 style="font-size: 32px; text-align: left; color: #7A9E7E; margin-bottom: 15px;">The ultimate space-saving solution for your home.</h3>
+        <p style="font-size: 24px; color: #A4755180; text-align: left; margin-bottom: 20px;">
             Flexi offers innovative designs that combine sleek aesthetics with practical functionality. From adaptable tables to smart storage solutions, Flexi redefines how you interact with your living space.
         </p>
         <a class="btn btn-save" href="{% url 'product:index' %}" style="background-color: #7A9E7E; color: white; text-decoration: none; padding: 10px 20px; border-radius: 5px;">
             explore now
         </a>
-    </div>
 </div>
+
 
     <!-- Storytelling Section -->
     <div class="container" style="padding: 5% 15%; width:90%;">
@@ -34,19 +29,19 @@
     <div class="container" style="padding: 5% 15%; align-items: center;">
         <h2 style="font-size: 40px; color: #7A9E7E; font-weight: 600; padding-left: 5%;">Why Choose Flexi?</h2>
         <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 20px;">
-            <div style="width: 200px; text-align: left; border: 1px solid #A47551; padding: 20px; border-radius: 8px;">
+            <div style="width: 23%; text-align: left; border: 1px solid #A47551; padding: 20px; border-radius: 8px;">
                 <h4 style="color: #7A9E7E; font-size: 24px;">Adaptable</h4>
                 <p>Designed for dynamic spaces, Flexi furniture adjusts to your needs effortlessly.</p>
             </div>
-            <div style="width: 200px; text-align: left; border: 1px solid #A47551; padding: 20px; border-radius: 8px;">
+            <div style="width: 23%; text-align: left; border: 1px solid #A47551; padding: 20px; border-radius: 8px;">
                 <h4 style="color: #7A9E7E; font-size: 24px;">Stylish</h4>
                 <p>Minimalist aesthetics that seamlessly blend with any decor.</p>
             </div>
-            <div style="width: 200px; text-align: left; border: 1px solid #A47551; padding: 20px; border-radius: 8px;">
+            <div style="width: 23%; text-align: left; border: 1px solid #A47551; padding: 20px; border-radius: 8px;">
                 <h4 style="color: #7A9E7E; font-size: 24px;">Space-saving</h4>
                 <p>Perfect for modern apartments and multifunctional living areas.</p>
             </div>
-            <div style="width: 200px; text-align: left; border: 1px solid #A47551; padding: 20px; border-radius: 8px;">
+            <div style="width: 23%; text-align: left; border: 1px solid #A47551; padding: 20px; border-radius: 8px;">
                 <h4 style="color: #7A9E7E; font-size: 24px;">Durable</h4>
                 <p>Built to last with premium, eco-friendly materials.</p>
             </div>
