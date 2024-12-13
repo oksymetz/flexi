@@ -1,16 +1,35 @@
 {% extends 'company/base.html' %}
 {% block content %}
 
-<div class="container" style="padding: 5%;">
-    <div class="container" style="text-align: center; padding-bottom: 3%;">
-        <h2 class="h2">Profile page</h2>
+<div class="container py-5" style="font-family: 'Source Sans Pro', sans-serif; background: #FCF8F3; color: #A47551;">
+    <!-- Page Title -->
+    <div class="text-center mb-4">
+        <h2 class="display-4" style="color: #7A9E7E;">Welcome to Your Profile</h2>
+        <p class="lead" style="color: #A47551;">Manage your account and explore all features tailored just for you!</p>
     </div>
-    <div class="container row">
-        <div class="col-6" style="text-align: center;">
-            <h3><a class="h2" href="{% url 'profile:login' %}">Log In</a></h3>
+
+    <!-- Options Section -->
+    <div class="row text-center">
+        <!-- Log In Section -->
+        <div class="col-md-6 mb-4">
+            <div class="card shadow-lg border-0" style="background: #FFFDF9;">
+                <div class="card-body">
+                    <h3 class="card-title" style="color: #A47551;">Already a member?</h3>
+                    <p class="card-text" style="color: #A47551;">Log in to your account and continue where you left off. Access your projects, settings, and more with just one click.</p>
+                    <a href="{% url 'profile:login' %}" class="btn btn-primary btn-lg mt-2" style="background: #7A9E7E; border: none;">Log In</a>
+                </div>
+            </div>
         </div>
-        <div class="col-6" style="text-align: center;">
-            <h3><a class="h2" href="{% url 'profile:signin' %}">Sign In</a></h3>
+
+        <!-- Sign In Section -->
+        <div class="col-md-6 mb-4">
+            <div class="card shadow-lg border-0" style="background: #FFFDF9;">
+                <div class="card-body">
+                    <h3 class="card-title" style="color: #A47551;">New here?</h3>
+                    <p class="card-text" style="color: #A47551;">Create an account now and start your journey with us. Enjoy personalized features and easy access to everything you need.</p>
+                    <a href="{% url 'profile:signin' %}" class="btn btn-success btn-lg mt-2" style="background: #7A9E7E; border: none;">Sign In</a>
+                </div>
+            </div>
         </div>
     </div>
 </div>
