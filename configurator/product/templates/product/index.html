@@ -1,27 +1,56 @@
 {% extends 'company/base.html' %}
 {% block content %}
+<div class="container" style="padding: 8% 5%;">
 
-<!-- <header>
-    <h1>Products</h1>
-</header> -->
-<div class="container" style="padding: 15%;">
-    <div class="container" style="text-align: center; padding-bottom: 3%;">
-        <h2 class="h2">Products</h2>
+    <!-- Hauptüberschrift -->
+    <div class="text-center" style="margin-bottom: 4%;">
+        <h1 style="font-size: 48px; color: #A47551; font-weight: bold; margin-bottom: 10px;">Our Flexi Products</h1>
+        <p style="font-size: 18px; color: #A47551;">Discover smart solutions tailored to your needs</p>
     </div>
-    <div class="container row">
-        <div class="col-6" style="text-align: center;">
-            <h3><a class="h2" href="{% url 'product:box' %}" style="font-size: 30px;">Connectable Boxes</a></h3>
-            <p style="font-size: 24px; color: #A4755180; padding-top: 20px;">
-                Information about our boxes
-            </p>
-        </div>
-        <div class="col-6" style="text-align: center;">
-            <h3><a class="h2" href="{% url 'product:configurator' %}" style="font-size: 30px;">Table Configurator</a></h3>
-            <p style="font-size: 24px; color: #A4755180; padding-top: 20px;">
-                Information about our table
-            </p>
-        </div>
+
+    <!-- Flexi Connectable Boxes -->
+    <div class="text-center" style="margin-bottom: 5%;">
+        <h2 style="font-size: 30px; font-weight: bold; color: #6A5D4D; margin-bottom: 10px;">
+            <a href="{% url 'product:box' %}" style="color: #7A9E7E; text-decoration: none;">Flexi Connectable Boxes</a>
+        </h2>
+        <p style="font-size: 18px; color: #A47551; max-width: 700px; margin: auto;">
+            Flexi Connectable Boxes are designed for maximum adaptability and flexibility. Whether you're organizing your home, office, or workshop, our connectable boxes can be easily combined and stacked to create customized storage solutions.
+        </p>
+        <p style="font-size: 16px; color: #7D6B5F; margin-top: 10px;">✓ Modular design ✓ Eco-friendly ✓ Easy to stack</p>
     </div>
+
+    <!-- Trennlinie -->
+    <hr style="width: 50%; border: none; border-top: 1px solid #D9C9B9; margin: 2% auto;">
+
+    <!-- Flexi Table Configurator -->
+    <div class="text-center" style="margin-bottom: 5%;">
+        <h2 style="font-size: 30px; font-weight: bold; color: #6A5D4D; margin-bottom: 10px;">
+            <a href="{% url 'product:configurator' %}" style="color: #7A9E7E; text-decoration: none;">Flexi Table Configurator</a>
+        </h2>
+        <p style="font-size: 18px; color: #A47551; max-width: 700px; margin: auto;">
+            The Flexi Table Configurator allows you to design a table perfectly suited to your body size, ensuring better ergonomics, comfort, and productivity in your workspace.
+        </p>
+        <p style="font-size: 16px; color: #7D6B5F; margin-top: 10px;">✓ Customizable height ✓ Durable materials ✓ Foldable design</p>
+    </div>
+
+    <!-- Trennlinie -->
+    <hr style="width: 50%; border: none; border-top: 1px solid #D9C9B9; margin: 2% auto;">
+
+    <!-- Ergonomie Absatz -->
+    <div class="text-center" style="margin-bottom: 5%;">
+        <h2 style="font-size: 26px; font-weight: bold; color:#A47551; margin-bottom: 10px;">Ergonomics & Health</h2>
+        <p style="font-size: 18px; color: #A47551; max-width: 700px; margin: auto;">
+            Poor sitting habits can lead to long-term health issues, including back pain and decreased productivity. Flexi products are designed to encourage correct posture, improve ergonomics, and support a healthier lifestyle.
+        </p>
+    </div>
+
+    <!-- Materialien Absatz -->
+    <div class="text-center">
+        <h2 style="font-size: 26px; font-weight: bold; color: #A47551; margin-bottom: 10px;">Sustainable Materials</h2>
+        <p style="font-size: 18px; color: #A47551; max-width: 700px; margin: auto;">
+            Our products are made from durable, eco-friendly materials, ensuring longevity while reducing environmental impact. Sustainability meets functionality with Flexi.
+        </p>
+    </div>
+
 </div>
-
 {% endblock %}
