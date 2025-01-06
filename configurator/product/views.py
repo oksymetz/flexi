@@ -16,9 +16,9 @@ def configurator(request):
     context = {}
     """View function for login page of site."""
     if request.method == 'POST':
-
-        standingHeight = 1
-        sittingHeight = 1
+        body_height=request.POST.get("inputBodyHeight")
+        standingHeight = 0.125*5*body_height
+        sittingHeight = 0.125*3.5*body_height
 
         draft = Draft(
             body_height=request.POST.get("inputBodyHeight"),         # Body height
