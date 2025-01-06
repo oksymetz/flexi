@@ -1,0 +1,1 @@
+default_app_config = 'configurator.apps.ProfilesConfig'
