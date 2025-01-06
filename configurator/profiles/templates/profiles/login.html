@@ -7,9 +7,33 @@
 
 
 <div class="container" style="padding: 5%;">
-    <div class="container" style="text-align: center; padding-bottom: 3%;">
-        <h2 class="h2">Log In</h2>
+    <div class="container row">
+        <div class="col-6" style="padding-right: 5%;">
+            <div class="container" style="text-align: left; padding-bottom: 3%;">
+                <h2 class="h2">Log In</h2>
+            </div>
+            <div class="container" style="padding-right: 10%;">
+                <form action="{% url 'profile:login' %}" method="post" name="login" id="login">
+                    <div class="form-group">
+                        <label class="label" for="login">Username</label>
+                        <input type="int" class="form-control" id="login" name="username" placeholder="Username" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="label" for="login">Password</label>
+                        <input type="int" class="form-control" id="login" name="password" placeholder="Password" required>
+                    </div>
+                    <button type="submit" value="Submit" class="btn btn-save">Log In</button>
+                </form>
+            </div>
+        </div>
+        <div class="col-6" style="padding-right: 5%;">
+            <div class="container" style="text-align: left; padding-bottom: 3%;">
+                <h2 class="h2">New to <span class="highlight">Flexi</span></h3>
+                <a class="btn btn-save" href="{% url 'profile:signin' %}">create an account</a>
+            </div>
+        </div>
     </div>
+
 </div>
 
 {% endblock %}

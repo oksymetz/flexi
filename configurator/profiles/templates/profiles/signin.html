@@ -2,9 +2,50 @@
 {% block content %}
 
 <div class="container" style="padding: 5%;">
-    <div class="container" style="text-align: center; padding-bottom: 3%;">
-        <h2 class="h2">Sign In</h2>
+    <div class="container" style="text-align: left; padding-bottom: 3%;">
+        <h2 class="h2">Sign Up</h2>
     </div>
+    <form action="{% url 'profile:signin' %}" method="post" name="signin" id="signin">
+        <div class="container row">
+            <div class="col-6" style="padding-right: 5%;">
+                <div class="container" style="padding-right: 10%;">
+                    <div class="form-group">
+                        <label class="label" for="signin">E-Mail Adress</label>
+                        <input type="text" class="form-control" id="login" name="email" placeholder="youremail@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="label" for="logsigninin">Username</label>
+                        <input type="text" class="form-control" id="signin" name="username" placeholder="Username" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="label" for="signin">Password</label>
+                        <input type="text" class="form-control" id="signin" name="password" placeholder="Password" required>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6" style="padding-right: 5%;">
+                <div class="form-group">
+                    <label class="label" for="signin">First Name</label>
+                    <input type="text" class="form-control" id="signin" name="name" placeholder="First name" required>
+                </div>
+                <div class="form-group">
+                    <label class="label" for="logsigninin">Second Name</label>
+                    <input type="text" class="form-control" id="signin" name="surname" placeholder="Second Name" required>
+                </div>
+                <div class="form-group">
+                    <label class="label" for="signin">Address</label>
+                    <input type="text" class="form-control" id="signin" name="address" placeholder="Address" required>
+                </div>
+            </div>
+        </div>
+        <div class="container row">
+            <div class="col-12" style="text-align: center; padding-top: 5%;">
+                <button type="submit" value="Submit" class="btn btn-save">Sing Up</button>
+            </div>
+        </div>
+        </form>
+    </div>
+
 </div>
 
 {% endblock %}
