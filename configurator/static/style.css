@@ -30,6 +30,12 @@ body, html {
     color: #A47551 !important;
 }
 
+.h3 {
+    font-size: 35px;
+    font-weight: 600 !important;
+    color: #A47551 !important;
+}
+
 .form-group {
     padding-bottom: 3% !important;
 }
@@ -93,3 +99,20 @@ body, html {
 .contact-details span {
     display: block;
 }
+
+.table {
+    background-color: #FAF3EB !important;
+    color: #A47551 !important;
+}
+
+th {
+    background-color: #FAF3EB !important;
+    color: #A47551 !important;
+}
+
+td {
+    background-color: #FAF3EB !important;
+    color: #A47551 !important;
+    padding: 10px;
+    border: 1px solid #ddd;
+  }
