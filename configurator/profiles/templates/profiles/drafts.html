@@ -1,0 +1,39 @@
+{% extends 'company/base.html' %}
+{% block content %}
+
+<div class="container" style="padding: 5%;">
+    <div class="container" style="text-align: center; padding-bottom: 3%;">
+        <h2 class="h2">Your saved drafts</h2>
+    </div>
+    <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Body Height</th>
+            <th scope="col">Stand Height</th>
+            <th scope="col">Sitting Height</th>
+            <th scope="col">Width</th>
+            <th scope="col">Length</th>
+            <th scope="col">Material</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for idx, bh, sth, sh, w, l, mat in items %}
+            <tr>
+                <th scope="row">{{ idx }}</th>
+                <td>{{ bh }}</td>
+                <td>{{ sth }}</td>
+                <td>{{ sh }}</td>
+                <td>{{ w }}</td>
+                <td>{{ l }}</td>
+                <td>{{ mat }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+      </table>
+</div>
+
+
+
+
+{% endblock %}
