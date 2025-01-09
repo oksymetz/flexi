@@ -7,9 +7,11 @@
     <div class="container" style="text-align: center; padding-bottom: 3%;">
         <h2 class="h2">Configure Your Desk</h2>
     </div>
+
     <div class="row container">
+        <!-- Image Section -->
         <div class="container col-6" style="padding: 5%;">
-            <img src="{% static 'product/table.png' %}" class="rounded float-start" style="align-content: center; width: 100%;">
+            <img src="{% static 'product/table.png' %}" class="rounded float-start" style="width: 100%;">
         </div>
         <div class="container col-4" style="padding-top: 5%; padding-bottom: 5%; align-content: center; ">
             <form action="{% url 'product:configurator' %}" method="post" name="TableDraft" id="TableDraft">

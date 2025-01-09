@@ -16,12 +16,12 @@ def configurator(request):
     context = {}
     """View function for login page of site."""
     if request.method == 'POST':
-        body_height=request.POST.get("inputBodyHeight")
+        body_height=float(request.POST.get("inputBodyHeight"))
         standingHeight = 0.125*5*body_height
         sittingHeight = 0.125*3.5*body_height
 
         draft = Draft(
-            body_height=request.POST.get("inputBodyHeight"),         # Body height
+            body_height=float(request.POST.get("inputBodyHeight")),         # Body height
             stand_height=standingHeight,        # Stand height
             sitting_height=sittingHeight,       # Sitting height
             width=request.POST.get("width"),                 # Width
