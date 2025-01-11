@@ -28,5 +28,9 @@ class ProductComponentAdmin(admin.ModelAdmin):
 
 @admin.register(Draft)
 class DraftAdmin(admin.ModelAdmin):
-    list_display = ('id', 'body_height', 'stand_height', "sitting_height", "width", "length", "material_id", "product_id", "user_id")
+    list_display = ('id', 'body_height', 'stand_height', "sitting_height", "width", "length", "material_id", "product_id", "user_id", 'quantity')
+
+@admin.register(Box)
+class BoxAdmin(admin.ModelAdmin):
+    list_display = ('id', 'box_height', 'box_length', 'box_depth',  "material_id", "product_id", "user_id", 'quantity')
 

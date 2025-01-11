@@ -2,37 +2,149 @@
 {% block content %}
 {% load static %}
 
-
 <div class="container" style="padding: 5%;">
     <div class="container" style="text-align: center; padding-bottom: 3%;">
         <h2 class="h2">Configure Your Desk</h2>
     </div>
 
-    <div class="row container">
-        <!-- Image Section -->
-        <div class="container col-6" style="padding: 5%;">
-            <img src="{% static 'product/table.png' %}" class="rounded float-start" style="width: 100%;">
+    <!-- Configurator Section -->
+    <div class="container" style="display: flex; justify-content: space-between; padding-top: 5%; padding-bottom: 5%;">
+        <!-- Form Section on the Left -->
+        <div class="col-6" style="max-width: 48%; padding-right: 5%;">
+            <!-- Option to Choose Configuration Mode -->
+            <div class="form-group">
+                <label for="configMode"><strong>Choose Configuration Mode:</strong></label>
+                <select class="form-control" id="configMode" onchange="toggleConfigMode()">
+                    <option value="calculator">Use Desk Height Calculator</option>
+                    <option value="manual">Enter Desk Values Manually</option>
+                </select>
+            </div>
+
+            <!-- Manual Input Mode -->
+            <div id="manualMode" style="display: none;">
+                <form action="{% url 'product:manually' %}" method="post" name="TableManuallyDraft" id="TableManuallyDraft">
+                    <div class="form-group">
+                        <label for="manualDeskHeight">Desk Height (cm)</label>
+                        <input type="int" class="form-control" id="table" name="manualDeskHeight"
+                               placeholder="Enter desk height in cm">
+                    </div>
+                    <div class="form-group">
+                        <label for="manualDeskDepth">Desk Width (cm)</label>
+                        <input type="int" class="form-control" id="table" name="manualDeskDepth" placeholder="Enter desk width in cm">
+                    </div>
+                    <div class="form-group">
+                        <label for="manualDeskLength">Desk Length (cm)</label>
+                        <input type="int" class="form-control" id="table" name="manualDeskLength"
+                               placeholder="Enter desk length in cm">
+                    </div>
+                    <div class="form-group">
+                        <label class="label" for="table">Quantity</label>
+                        <input type="int" class="form-control" id="table" name="quantity"
+                               placeholder="Enter quantity" required>
+                    </div>
+                    <button type="submit" value="Submit" class="btn btn-save">Save Draft</button>
+                </form>
+            </div>
+
+            <!-- Calculator Mode -->
+            <div id="calculatorMode" style="display: none;">
+                <form action="{% url 'product:configurator' %}" method="post" name="TableDraft" id="TableDraft">
+                    <div class="form-group">
+                        <label class="label" for="table">Your Body Height</label>
+                        <input type="int" class="form-control" id="table" name="inputBodyHeight"
+                               placeholder="Enter body height in cm" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="label" for="table">Length</label>
+                        <input type="int" class="form-control" id="table" name="length"
+                               placeholder="Enter length in cm" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="label" for="table">Width</label>
+                        <input type="int" class="form-control" id="table" name="depth"
+                               placeholder="Enter width in cm" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="label" for="table">Quantity</label>
+                        <input type="int" class="form-control" id="table" name="quantity"
+                               placeholder="Enter quantity" required>
+                    </div>
+                    <button type="submit" value="Submit" class="btn btn-save">Save Draft</button>
+                </form>
+            </div>
         </div>
-        <div class="container col-4" style="padding-top: 5%; padding-bottom: 5%; align-content: center; ">
-            <form action="{% url 'product:configurator' %}" method="post" name="TableDraft" id="TableDraft">
-                <div class="form-group">
-                    <label class="label" for="table">Your Body Height </label>
-                    <input type="int" class="form-control" id="table" name="inputBodyHeight" placeholder="Enter body height in cm" required>
-                </div>
-                <div class="form-group">
-                    <label class="label" for="table">Length</label>
-                    <input type="int" class="form-control" id="table" name="length" placeholder="Enter length in cm" required>
-                </div>
-                <div class="form-group">
-                    <label class="label" for="table">Width</label>
-                    <input type="int" class="form-control" id="table" name="width" placeholder="Enter width in cm" required>
-                </div>
-                <button type="submit" value="Submit" class="btn btn-save">Save Draft</button>
-            </form>
+
+        <!-- Image Section on the Right -->
+        <div class="col-6" style="max-width: 48%; padding-left: 5%; text-align: center;">
+            <!-- Large Image -->
+            <div style="text-align: center;">
+                <img id="largeImage" src="{% static 'product/box.png' %}"
+                     class="rounded"
+                     style="width: 100%; max-width: 400px; height: 300px; object-fit: contain;"
+                     alt="Large Box Image">
+            </div>
+
+            <!-- Thumbnails -->
+            <div style="display: flex; justify-content: center; gap: 10px; padding-top: 20px;">
+                <img src="{% static 'product/box.png' %}"
+                     class="thumbnail"
+                     onclick="changeImage(this.src)"
+                     style="width: 20%; max-width: 80px; height: 60px; object-fit: contain; cursor: pointer;"
+                     alt="Thumbnail 1">
+                <img src="{% static 'product/box.png' %}"
+                     class="thumbnail"
+                     onclick="changeImage(this.src)"
+                     style="width: 20%; max-width: 80px; height: 60px; object-fit: contain; cursor: pointer;"
+                     alt="Thumbnail 2">
+                <img src="{% static 'product/box.png' %}"
+                     class="thumbnail"
+                     onclick="changeImage(this.src)"
+                     style="width: 20%; max-width: 80px; height: 60px; object-fit: contain; cursor: pointer;"
+                     alt="Thumbnail 3">
+                <img src="{% static 'product/box.png' %}"
+                     class="thumbnail"
+                     onclick="changeImage(this.src)"
+                     style="width: 20%; max-width: 80px; height: 60px; object-fit: contain; cursor: pointer;"
+                     alt="Thumbnail 4">
+            </div>
+        </div>
+    </div>
+
+    <!-- Infotext Section -->
+    <div class="row" style="margin-top: 40px; text-align: center;">
+        <div class="col-12">
+            <p style="font-size: 16px; color: gray;">
+                Flexi Boxes are designed for versatility and durability. They are perfect for storing your items securely and in style.
+                With customizable dimensions, they are suitable for every need. Order your Flexi Box today!
+            </p>
         </div>
     </div>
 </div>
 
+<script>
+    function changeImage(src) {
+        // Replace the large image's source with the clicked thumbnail's source
+        document.getElementById('largeImage').src = src;
+    }
+</script>
 
+<script>
+    // Toggle between calculator and manual input
+    function toggleConfigMode() {
+        const mode = document.getElementById("configMode").value;
+        if (mode === "calculator") {
+            document.getElementById("calculatorMode").style.display = "block";
+            document.getElementById("manualMode").style.display = "none";
+        } else {
+            document.getElementById("calculatorMode").style.display = "none";
+            document.getElementById("manualMode").style.display = "block";
+        }
+    }
+
+    // Initialize the configuration mode on page load
+    document.addEventListener("DOMContentLoaded", function () {
+        toggleConfigMode(); // Ensure the correct mode is displayed
+    });
+</script>
 
 {% endblock %}

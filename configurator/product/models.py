@@ -65,9 +65,9 @@ class ProductComponent(models.Model):
 
 class Draft(models.Model):
     id = models.AutoField(primary_key=True)  # PK
-    body_height = models.FloatField()             # Body height
+    body_height = models.FloatField(null=True)             # Body height
     stand_height = models.FloatField()            # Stand height
-    sitting_height = models.FloatField()          # Sitting height
+    sitting_height = models.FloatField()
     width = models.FloatField()                   # Width
     length = models.FloatField()                  # Length
     material = models.ForeignKey(
@@ -82,6 +82,34 @@ class Draft(models.Model):
         User,
         on_delete=models.CASCADE
     )
+    quantity = models.PositiveIntegerField()
 
     def __str__(self):
         return f"Draft {self.id}"
+
+class Box(models.Model):
+    id = models.AutoField(primary_key=True)
+    box_height = models.FloatField()
+    box_length = models.FloatField()
+    box_depth =  models.FloatField()
+
+    material = models.ForeignKey(
+        Material,
+        on_delete=models.CASCADE
+    )  # FK to Material
+    product = models.ForeignKey(
+        Product,
+        on_delete=models.CASCADE
+    )  # FK to Product
+    user = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE
+    )
+    quantity = models.PositiveIntegerField()
+
+    def __str__(self):
+        return f"Box {self.id}"
+
+
+
+
