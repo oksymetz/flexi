@@ -2,75 +2,77 @@
 {% block content %}
 {% load static %}
 
-<div class="container" style="padding: 5%;">
+<div class="container" style="padding: 5%; display: flex; gap: 20px; align-items: flex-start; position: relative;">
 
+    <!-- Text Section -->
+    <div style="flex: 1; text-align: left;">
+        <!-- Überschrift -->
+        <div class="container" style="padding-bottom: 3%;">
+            <h2 class="h2" style="font-size: 30px;">Collectable Boxes</h2>
+        </div>
+        <div class="container" style="padding-bottom: 1%;">
+            <p style="font-size: 18px; font-style: italic; color: gray;">
+                Discover the perfect balance of durability and design with Flexi Boxes!
+            </p>
+        </div>
 
-    <!-- Überschrift -->
-    <div class="container text-center" style="padding-bottom: 3%;">
-        <h2 class="h2" style="font-size: 30px;">Collectable Boxes</h2>
-    </div>
-
-    <div class="container text-center" style="padding-bottom: 1%;">
-        <p style="font-size: 18px; font-style: italic; color: gray;">
-            "Discover the perfect balance of durability and design with Flexi Boxes!"
-        </p>
-    </div>
-
-
-    <div id="box">
+        <!-- Form Section -->
         <form action="{% url 'product:box' %}" method="post" name="box_draft" id="box">
             <div class="form-group">
                 <label for="box_height">Box Height (cm)</label>
-                <input type="int" class="form-control" id="box" name="box_height"
-                       placeholder="Enter box height in cm">
+                <input type="int" class="form-control" name="box_height" placeholder="Enter box height in cm">
             </div>
             <div class="form-group">
                 <label for="box_depth">Box Depth (cm)</label>
-                <input type="int" class="form-control" id="box" name="box_depth"
-                       placeholder="Enter box depth in cm">
+                <input type="int" class="form-control" name="box_depth" placeholder="Enter box depth in cm">
             </div>
             <div class="form-group">
                 <label for="box_length">Box Length (cm)</label>
-                <input type="int" class="form-control" id="box" name="box_length"
-                       placeholder="Enter box length in cm">
+                <input type="int" class="form-control" name="box_length" placeholder="Enter box length in cm">
             </div>
             <div class="form-group">
-                <label class="label" for="quantity">Quantity</label>
-                <input type="int" class="form-control" id="box" name="quantity"
-                       placeholder="Enter quantity" required>
+                <label for="quantity">Quantity</label>
+                <input type="int" class="form-control" name="quantity" placeholder="Enter quantity" required>
             </div>
             <button type="submit" value="Submit" class="btn btn-save">Save Draft</button>
         </form>
     </div>
+
     <!-- Image Section -->
-    <div class="col-6" style="padding: 5%;">
+    <div style="max-width: 48%; padding-left: 5%; text-align: center;margin-top: 140px">
         <!-- Large Image -->
-        <div style="text-align: center;">
+        <div style="position: relative;">
             <img id="largeImage" src="{% static 'product/Box 1.jpg' %}"
                  class="rounded"
                  style="width: 100%; max-width: 400px; height: 300px; object-fit: contain;"
                  alt="Large Box Image">
-        </div>
+            <!-- Next Arrow Button -->
+            <button id="nextImageBtn"
+                    style="position: absolute; top: 40%; right: 10px; transform: translateY(-50%);
+                           color: #A4755180;
+                           padding: 10px; font-size: 24px; background-color: transparent; border: none;
+                           cursor: pointer; transition: all 0.3s ease;">
+                →
+            </button>
 
-        <!-- Thumbnails -->
+
+
+
+        <!-- Thumbnail Navigation -->
         <div style="display: flex; justify-content: center; gap: 10px; padding-top: 20px;">
-            <img src="{% static 'product/Box 2.jpg' %}"
-                 class="thumbnail"
+            <img src="{% static 'product/Box 2.jpg' %}" class="thumbnail"
                  onclick="changeImage(this.src)"
                  style="width: 20%; max-width: 80px; height: 60px; object-fit: contain; cursor: pointer;"
                  alt="Thumbnail 1">
-            <img src="{% static 'product/Box 3.jpg' %}"
-                 class="thumbnail"
+            <img src="{% static 'product/Box 3.jpg' %}" class="thumbnail"
                  onclick="changeImage(this.src)"
                  style="width: 20%; max-width: 80px; height: 60px; object-fit: contain; cursor: pointer;"
                  alt="Thumbnail 2">
-            <img src="{% static 'product/Box 4.jpg' %}"
-                 class="thumbnail"
+            <img src="{% static 'product/Box 4.jpg' %}" class="thumbnail"
                  onclick="changeImage(this.src)"
                  style="width: 20%; max-width: 80px; height: 60px; object-fit: contain; cursor: pointer;"
                  alt="Thumbnail 3">
-            <img src="{% static 'product/Box 5.jpg' %}"
-                 class="thumbnail"
+            <img src="{% static 'product/Box 5.jpg' %}" class="thumbnail"
                  onclick="changeImage(this.src)"
                  style="width: 20%; max-width: 80px; height: 60px; object-fit: contain; cursor: pointer;"
                  alt="Thumbnail 4">
@@ -78,23 +80,26 @@
     </div>
 </div>
 
-<!-- Infotext Section -->
-<div class="row" style="margin-top: 40px; text-align: center;">
-    <div class="col-12">
-        <p style="font-size: 16px; color: gray;">
-            Flexi Boxes are designed for versatility and durability. They are perfect for storing your items securely
-            and in style.
-            With customizable dimensions, they are suitable for every need. Order your Flexi Box today!
-        </p>
-    </div>
-</div>
-</div>
-
 <script>
+    // JavaScript for Thumbnail Click
     function changeImage(src) {
-        // Replace the large image's source with the clicked thumbnail's source
         document.getElementById('largeImage').src = src;
     }
+
+    // JavaScript for Next Button
+    let currentIndex = 0;
+    const imageSources = [
+        "{% static 'product/Box 1.jpg' %}",
+        "{% static 'product/Box 2.jpg' %}",
+        "{% static 'product/Box 3.jpg' %}",
+        "{% static 'product/Box 4.jpg' %}",
+        "{% static 'product/Box 5.jpg' %}"
+    ];
+
+    document.getElementById('nextImageBtn').addEventListener('click', () => {
+        currentIndex = (currentIndex + 1) % imageSources.length; // Cycle through images
+        document.getElementById('largeImage').src = imageSources[currentIndex];
+    });
 </script>
 
 {% endblock %}

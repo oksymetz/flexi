@@ -3,12 +3,16 @@
 {% load static %}
 
 <div class="container" style="padding: 5%;">
-    <div class="container" style="text-align: center; padding-bottom: 3%;">
-        <h2 class="h2">Configure Your Desk</h2>
+    <div class="container" style="text-align: left; padding-bottom: 3%;">
+        <h2 class="h2" style="font-weight: bold;">Flexi Table</h2>
+        <!-- Slogan im gleichen grauen Farbton wie der Infotext -->
+        <p style="color: gray; font-style: italic; font-size: 16px;">The perfect balance of durability, flexibility, and
+            style for your workspace.</p>
     </div>
 
     <!-- Configurator Section -->
-    <div class="container" style="display: flex; justify-content: space-between; padding-top: 5%; padding-bottom: 5%;">
+    <div class="container" style="display: flex; justify-content: space-between; padding-top: 3%; padding-bottom: 5%;">
+        <!-- Boxen nach oben verschoben -->
         <!-- Form Section on the Left -->
         <div class="col-6" style="max-width: 48%; padding-right: 5%;">
             <!-- Option to Choose Configuration Mode -->
@@ -22,7 +26,8 @@
 
             <!-- Manual Input Mode -->
             <div id="manualMode" style="display: none;">
-                <form action="{% url 'product:manually' %}" method="post" name="TableManuallyDraft" id="TableManuallyDraft">
+                <form action="{% url 'product:manually' %}" method="post" name="TableManuallyDraft"
+                      id="TableManuallyDraft">
                     <div class="form-group">
                         <label for="manualDeskHeight">Desk Height (cm)</label>
                         <input type="int" class="form-control" id="table" name="manualDeskHeight"
@@ -30,7 +35,8 @@
                     </div>
                     <div class="form-group">
                         <label for="manualDeskDepth">Desk Width (cm)</label>
-                        <input type="int" class="form-control" id="table" name="manualDeskDepth" placeholder="Enter desk width in cm">
+                        <input type="int" class="form-control" id="table" name="manualDeskDepth"
+                               placeholder="Enter desk width in cm">
                     </div>
                     <div class="form-group">
                         <label for="manualDeskLength">Desk Length (cm)</label>
@@ -74,57 +80,102 @@
             </div>
         </div>
 
-        <!-- Image Section on the Right -->
-        <div class="col-6" style="max-width: 48%; padding-left: 5%; text-align: center;">
+        <!-- Image Section -->
+        <div style="max-width: 48%; padding-left: 5%; text-align: center;margin-top: 35px">
             <!-- Large Image -->
-            <div style="text-align: center;">
-                <img id="largeImage" src="{% static 'product/box.png' %}"
+            <div style="position: relative;">
+                <img id="largeImage" src="{% static 'product/Tisch 1.jpg' %}"
                      class="rounded"
                      style="width: 100%; max-width: 400px; height: 300px; object-fit: contain;"
                      alt="Large Box Image">
-            </div>
+                <!-- Next Arrow Button -->
+                <button id="nextImageBtn"
+                        style="position: absolute; top: 40%; right: 10px; transform: translateY(-50%);
+                           color: #A4755180;
+                           padding: 10px; font-size: 24px; background-color: transparent; border: none;
+                           cursor: pointer; transition: all 0.3s ease;">
+                    →
+                </button>
 
-            <!-- Thumbnails -->
-            <div style="display: flex; justify-content: center; gap: 10px; padding-top: 20px;">
-                <img src="{% static 'product/box.png' %}"
-                     class="thumbnail"
-                     onclick="changeImage(this.src)"
-                     style="width: 20%; max-width: 80px; height: 60px; object-fit: contain; cursor: pointer;"
-                     alt="Thumbnail 1">
-                <img src="{% static 'product/box.png' %}"
-                     class="thumbnail"
-                     onclick="changeImage(this.src)"
-                     style="width: 20%; max-width: 80px; height: 60px; object-fit: contain; cursor: pointer;"
-                     alt="Thumbnail 2">
-                <img src="{% static 'product/box.png' %}"
-                     class="thumbnail"
-                     onclick="changeImage(this.src)"
-                     style="width: 20%; max-width: 80px; height: 60px; object-fit: contain; cursor: pointer;"
-                     alt="Thumbnail 3">
-                <img src="{% static 'product/box.png' %}"
-                     class="thumbnail"
-                     onclick="changeImage(this.src)"
-                     style="width: 20%; max-width: 80px; height: 60px; object-fit: contain; cursor: pointer;"
-                     alt="Thumbnail 4">
+
+                <!-- Thumbnail Navigation -->
+                <div style="display: flex; justify-content: center; gap: 10px; padding-top: 20px;">
+                    <img src="{% static 'product/Tisch 2.jpg' %}" class="thumbnail"
+                         onclick="changeImage(this.src)"
+                         style="width: 20%; max-width: 80px; height: 60px; object-fit: contain; cursor: pointer;"
+                         alt="Thumbnail 1">
+                    <img src="{% static 'product/Tisch 3.jpg' %}" class="thumbnail"
+                         onclick="changeImage(this.src)"
+                         style="width: 20%; max-width: 80px; height: 60px; object-fit: contain; cursor: pointer;"
+                         alt="Thumbnail 2">
+                    <img src="{% static 'product/Tisch 4.jpg' %}" class="thumbnail"
+                         onclick="changeImage(this.src)"
+                         style="width: 20%; max-width: 80px; height: 60px; object-fit: contain; cursor: pointer;"
+                         alt="Thumbnail 3">
+                </div>
             </div>
         </div>
-    </div>
 
-    <!-- Infotext Section -->
-    <div class="row" style="margin-top: 40px; text-align: center;">
-        <div class="col-12">
-            <p style="font-size: 16px; color: gray;">
-                Flexi Boxes are designed for versatility and durability. They are perfect for storing your items securely and in style.
-                With customizable dimensions, they are suitable for every need. Order your Flexi Box today!
-            </p>
-        </div>
+        <script>
+            // JavaScript for Thumbnail Click
+            function changeImage(src) {
+                document.getElementById('largeImage').src = src;
+            }
+
+            // JavaScript for Next Button
+            let currentIndex = 0;
+            const imageSources = [
+                "{% static 'product/Tisch 1.jpg' %}",
+                "{% static 'product/Tisch 2.jpg' %}",
+                "{% static 'product/Tisch 3.jpg' %}",
+                "{% static 'product/Tisch 4.jpg' %}"
+            ];
+
+            document.getElementById('nextImageBtn').addEventListener('click', () => {
+                currentIndex = (currentIndex + 1) % imageSources.length; // Cycle through images
+                document.getElementById('largeImage').src = imageSources[currentIndex];
+            });
+        </script>
+
     </div>
 </div>
 
+<!-- Infotext Section -->
+<div class="row" style="margin-top: 40px; text-align: center;">
+    <div class="col-12">
+        <p style="font-size: 16px; color: gray;">
+            Flexi Boxes are designed for versatility and durability. They are perfect for storing your items securely
+            and in style.
+            With customizable dimensions, they are suitable for every need. Order your Flexi Box today!
+        </p>
+    </div>
+</div>
+
+
+
 <script>
+    // Funktion zum Wechseln des Bildes durch Klicken auf die Thumbnails
     function changeImage(src) {
-        // Replace the large image's source with the clicked thumbnail's source
         document.getElementById('largeImage').src = src;
+    }
+
+    // Funktion zum Wechseln des Bildes nach rechts
+    function nextImage() {
+        const images = [
+            "{% static 'product/Tisch 1.jpg' %}",
+            "{% static 'product/Tisch 2.jpg' %}",
+            "{% static 'product/Tisch 3.jpg' %}",
+            "{% static 'product/Tisch 4.jpg' %}"
+        ];
+
+        const currentImage = document.getElementById('largeImage').src.split('/').pop(); // Nur den Dateinamen extrahieren
+        let currentIndex = images.indexOf(`{% static 'product/${currentImage}' %}`);
+
+        if (currentIndex === images.length - 1) {
+            currentIndex = -1; // Gehe zurück zum ersten Bild
+        }
+
+        document.getElementById('largeImage').src = images[currentIndex + 1];
     }
 </script>
 

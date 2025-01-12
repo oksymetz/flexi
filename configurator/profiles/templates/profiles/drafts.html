@@ -52,13 +52,13 @@
         </tr>
         </thead>
         <tbody>
-        {% for idx, bxh, bxl, bxd, bq, in items%}
+        {% for idx, bxh, bxl, bxd, q in items%}
         <tr>
             <th scope="row">{{ idx }}</th>
             <td>{{ bxh }}</td>
             <td>{{ bxl }}</td>
             <td>{{ bxd }}</td>
-            <td>{{ bq }}</td>
+            <td>{{ q }}</td>
         </tr>
         {% endfor %}
         </tbody>
