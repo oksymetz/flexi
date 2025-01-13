@@ -20,7 +20,7 @@
         </tr>
         </thead>
         <tbody>
-        {% for idx, bh, sth, sh, w, l, mat, q in items%}
+        {% for idx, bh, sth, sh, w, l, mat, q in draft_items%}
         <tr>
             <th scope="row">{{ idx }}</th>
             <td>{{ bh }}</td>
@@ -47,17 +47,19 @@
             <th scope="col">Box Height</th>
             <th scope="col">Box Length</th>
             <th scope="col">Box Depth</th>
+            <th scope="col">Material</th>
             <th scope="col">Quantity</th>
 
         </tr>
         </thead>
         <tbody>
-        {% for idx, bxh, bxl, bxd, q in items%}
+        {% for idx, bxh, bxl, bxd, mat, q in box_items%}
         <tr>
             <th scope="row">{{ idx }}</th>
             <td>{{ bxh }}</td>
             <td>{{ bxl }}</td>
             <td>{{ bxd }}</td>
+            <td>{{ mat }}</td>
             <td>{{ q }}</td>
         </tr>
         {% endfor %}
