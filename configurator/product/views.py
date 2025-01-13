@@ -75,7 +75,7 @@ def box(request):
             box_length=request.POST.get("box_length"),  # Width
             box_depth=request.POST.get("box_depth"),
             material_id=1,  # wood
-            product_id=1,  # table
+            product_id=2,  # table
             user_id=request.user.id,
             quantity=request.POST.get("quantity"),
         )
