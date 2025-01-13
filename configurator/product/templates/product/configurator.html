@@ -30,23 +30,23 @@
                       id="TableManuallyDraft">
                     <div class="form-group">
                         <label for="manualDeskHeight"><strong>Desk Height (cm)</strong></label>
-                        <input type="int" class="form-control" id="table" name="manualDeskHeight"
-                               placeholder="Enter desk height in cm">
+                        <input type="number" class="form-control" id="table" name="manualDeskHeight"
+                               placeholder="Enter desk height in cm" required min="1" max="200">
                     </div>
                     <div class="form-group">
                         <label for="manualDeskDepth"><strong>Desk Depth (cm)</strong></label>
-                        <input type="int" class="form-control" id="table" name="manualDeskDepth"
-                               placeholder="Enter desk depth in cm">
+                        <input type="number" class="form-control" id="table" name="manualDeskDepth"
+                               placeholder="Enter desk depth in cm" required min="1" max="200">
                     </div>
                     <div class="form-group">
                         <label for="manualDeskLength"><strong>Desk Length (cm)</strong></label>
-                        <input type="int" class="form-control" id="table" name="manualDeskLength"
-                               placeholder="Enter desk length in cm">
+                        <input type="number" class="form-control" id="table" name="manualDeskLength"
+                               placeholder="Enter desk length in cm" required min="1" max="200">
                     </div>
                     <div class="form-group">
                         <label class="label" for="table">Quantity</label>
-                        <input type="int" class="form-control" id="table" name="quantity"
-                               placeholder="Enter quantity" required>
+                        <input type="number" class="form-control" id="table" name="quantity"
+                               placeholder="Enter quantity" required min="1">
                     </div>
                     <button type="submit" value="Submit" class="btn btn-save">Save Draft</button>
                 </form>
@@ -57,23 +57,23 @@
                 <form action="{% url 'product:configurator' %}" method="post" name="TableDraft" id="TableDraft">
                     <div class="form-group">
                         <label class="label" for="table">Your Body Height (cm)</label>
-                        <input type="int" class="form-control" id="table" name="inputBodyHeight"
-                               placeholder="Enter body height in cm" required>
+                        <input type="number" class="form-control" id="table" name="inputBodyHeight"
+                               placeholder="Enter body height in cm" required min="1" max="200">
                     </div>
                     <div class="form-group">
                         <label class="label" for="table">Desk Length (cm)</label>
-                        <input type="int" class="form-control" id="table" name="length"
-                               placeholder="Enter length in cm" required>
+                        <input type="number" class="form-control" id="table" name="length"
+                               placeholder="Enter length in cm" required min="1" max="200">
                     </div>
                     <div class="form-group">
                         <label class="label" for="table">Desk Depth (cm)</label>
-                        <input type="int" class="form-control" id="table" name="depth"
-                               placeholder="Enter depth in cm" required>
+                        <input type="number" class="form-control" id="table" name="depth"
+                               placeholder="Enter depth in cm" required min="1" max="200">
                     </div>
                     <div class="form-group">
                         <label class="label" for="table">Quantity</label>
-                        <input type="int" class="form-control" id="table" name="quantity"
-                               placeholder="Enter quantity" required>
+                        <input type="number" class="form-control" id="table" name="quantity"
+                               placeholder="Enter quantity" required min="1">
                     </div>
                     <button type="submit" value="Submit" class="btn btn-save">save draft</button>
                 </form>

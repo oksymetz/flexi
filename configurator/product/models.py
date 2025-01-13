@@ -1,12 +1,19 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.core.exceptions import ValidationError
+from django.db import models
+
+def validate_range(value):
+    if value < 0 or value > 200:
+        raise ValidationError(f"Value must be between 0 and 200. Given: {value}")
+
 
 # Create your models here.
 class Material(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=255)
     material_components = models.TextField()                           # Material components (long text)
-    thickness = models.FloatField()                                    # Thickness as a float
+    thickness = models.FloatField(default=1.0)                                    # Thickness as a float
 
     def __str__(self):
         return self.name
@@ -89,9 +96,9 @@ class Draft(models.Model):
 
 class Box(models.Model):
     id = models.AutoField(primary_key=True)
-    box_height = models.FloatField()
-    box_length = models.FloatField()
-    box_depth =  models.FloatField()
+    box_height = models.FloatField(validators=[validate_range])
+    box_length = models.FloatField(validators=[validate_range])
+    box_depth =  models.FloatField(validators=[validate_range])
 
     material = models.ForeignKey(
         Material,
@@ -109,7 +116,5 @@ class Box(models.Model):
 
     def __str__(self):
         return f"Box {self.id}"
-
-
 
 
