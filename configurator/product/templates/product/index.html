@@ -1,28 +1,33 @@
 {% extends 'company/base.html' %}
 {% block content %}
 {% load static %}
-<div class="container" style="padding: 8% 5%;">
-
+<div class="container" style="padding: 5% 5%;">
 
     <div class="text-center" style="margin-bottom: 4%;">
-        <h1 style="font-size: 48px; color: #A47551; font-weight: bold; margin-bottom: 10px;">Our Flexi Products</h1>
-        <p style="font-size: 18px; color: #A47551;">Discover smart solutions tailored to your needs</p>
+        <h2 class="h2" style="font-weight: bold; margin-bottom: 10px; font-size: 32px;">Our Flexi Products</h2>
+        <p style="font-size: 20px; color: #a47551af; ">Discover smart solutions tailored to your needs</p>
     </div>
 
 
     <div class="row" style="margin-bottom: 4%;">
         <div class="col-6 text-center" style="position: relative;">
-            <img src="{% static 'product/Box 2.jpg' %}" alt="Flexi Connectable Boxes" style="width: 100%; max-height: 300px; object-fit: cover;">
+            <img src="{% static 'product/box-index.jpg' %}" alt="Flexi Connectable Boxes" style="width: 100%; max-height: 300px; object-fit: cover;">
+            <h2 style="font-size: 24px; font-weight: bold; margin-top: 5%;">
+                <a href="{% url 'product:box' %}" style="color: #7A9E7E; text-decoration: underline;">Flexi Connectable Boxes</a>
+            </h2>
         </div>
         <div class="col-6 text-center" style="position: relative;">
-            <img src="{% static 'product/Tisch 1.jpg' %}" alt="Flexi Table Configurator" style="width: 100%; max-height: 300px; object-fit: cover;">
+            <img src="{% static 'product/table-index.png' %}" alt="Flexi Table Configurator" style="width: 100%; max-height: 300px; object-fit: cover;">
+            <h2 style="font-size: 24px; font-weight: bold; margin-top: 5%;">
+                <a href="{% url 'product:configurator' %}" style="color: #7A9E7E; text-decoration: underline;">Flexi Table Configurator</a>
+            </h2>
         </div>
     </div>
 
-
+    <!--
     <div class="container row">
         <div class="col-6" style="text-align: center;">
-            <h2 style="font-size: 30px; font-weight: bold; color: #6A5D4D; margin-bottom: 10px;">
+            <h2 style="font-size: 24px; font-weight: bold; color: #6A5D4D; margin-bottom: 10px;">
                 <a href="{% url 'product:box' %}" style="color: #7A9E7E; text-decoration: underline;">Flexi Connectable Boxes</a>
             </h2>
             <p style="font-size: 18px; color: #A47551; max-width: 700px; margin: auto;">
@@ -31,13 +36,14 @@
             <p style="font-size: 16px; color: #7D6B5F; margin-top: 10px;">✓ Modular design ✓ Eco-friendly ✓ Easy to stack</p>
         </div>
         <div class="col-6" style="text-align: center;">
-            <h2 style="font-size: 30px; font-weight: bold; color: #6A5D4D; margin-bottom: 10px;">
+            <h2 style="font-size: 24px; font-weight: bold; color: #6A5D4D; margin-bottom: 10px;">
                 <a href="{% url 'product:configurator' %}" style="color: #7A9E7E; text-decoration: underline;">Flexi Table Configurator</a>
             </h2>
             <p style="font-size: 18px; color: #A47551; max-width: 700px; margin: auto;">
                 The Flexi Table Configurator allows you to design a table perfectly suited to your body size, ensuring better ergonomics, comfort, and productivity in your workspace.
             </p>
             <p style="font-size: 16px; color: #7D6B5F; margin-top: 36px;">✓ Customizable height ✓ Durable materials ✓ Foldable design</p>
+           
         </div>
     </div>
 
@@ -57,6 +63,6 @@
             Our products are made from durable, eco-friendly materials, ensuring longevity while reducing environmental impact. Sustainability meets functionality with Flexi.
         </p>
     </div>
-
+    -->
 </div>
 {% endblock %}

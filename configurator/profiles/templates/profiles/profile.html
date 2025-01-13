@@ -1,49 +1,47 @@
 {% extends 'company/base.html' %}
 {% block content %}
 
-<div class="container" style="padding: 5%;">
-    <div class="container" style="text-align: center; padding-bottom: 3%;">
-        <h2 class="h2">Profile page</h2>
-    </div>
+<div class="container" style="padding: 5%; padding-bottom: 15%;">
+    
     <div class="container row">
         <div class="col-6" style="text-align: center;">
             <div class="container" style="text-align: left; padding-bottom: 3%;">
-                <h3 class="h3" fon>Your Profile</h3>
+                <h3 class="h3" style="font-size: 32px;" >Your Profile</h3>
             </div>
             <div class="container" style="text-align: left;">
                     <div class="row">
                         <div class="col">
-                            <p>Name</p>
+                            <p style="font-size: 20px;">Name</p>
                         </div>
                         <div class="col">
-                            <p>{{name}}</p>
+                            <p style="font-size: 20px;">{{name}}</p>
+                        </div>
+                    </div>
+                    <div class="row"> 
+                        <div class="col">
+                            <p style="font-size: 20px;">Email</p>
+                        </div>
+                        <div class="col">
+                            <p style="font-size: 20px;">{{user.email}}</p>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col">
-                            <p>Email</p>
+                            <p style="font-size: 20px;">Address</p>
                         </div>
                         <div class="col">
-                            <p>{{user.email}}</p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            <p>Address</p>
-                        </div>
-                        <div class="col">
-                            <p>{{adress}}</p>
+                            <p style="font-size: 20px;">{{adress}}</p>
                         </div>
                     </div>
             </div>
         </div>
-        <div class="col-6" style="text-align: left;">
-            <ul>
+        <div class="col-6" style="text-align: left; ">
+            <ul style="padding-top: 13%;list-style-type: none;">
                 <li>
-                    <h4><a class="h3" href="{% url 'profile:drafts' %}">Drafts</a></h4>
+                    <h4 ><a style='font-weight: 600; font-size: 30px; color: #7A9E7E;' href="{% url 'profile:drafts' %}">Drafts</a></h4>
                 </li>
                 <li>
-                    <h4><a class="h3" href="{% url 'profile:log_out' %}">Logout</a></h4>
+                    <h4 ><a style='font-weight: 600; font-size: 30px; color: #7A9E7E;' href="{% url 'profile:log_out' %}">Logout</a></h4>
                 </li>
             </ul>
         </div>
