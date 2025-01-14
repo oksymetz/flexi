@@ -35,14 +35,24 @@
                                 </a>
                             </li>
                             <li class="nav-item active">
-                                <a class="nav-link icon" href="{% url 'profile:index' %}">
-                                    <img src="{% static 'company/icons/inclusive.svg' %}">
-                                </a>
+                                
+                                <div class="dropdown col-2">
+                                    <button class="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <img src="{% static 'company/icons/inclusive.svg' %}">
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li class="dropdown-item" style="color:#A47551;"><input type="checkbox" style="accent-color: #A47551; background-color: #FCF8F3;">    dark mode</li>
+                                        <li class="dropdown-item" style="color:#A47551;"><input type="checkbox" style="accent-color: #A47551; background-color: #FCF8F3;">    voice access</li>
+                                        <li class="dropdown-item" style="color:#A47551;"><input type="checkbox" style="accent-color: #A47551; background-color: #FCF8F3;">    narrator</li>
+                                        
+                                    </ul>
+                                </div>
                             </li>
                             <li class="nav-item active">
                                 <a class="nav-link icon" href="{% url 'profile:drafts' %}">
                                     <img src="{% static 'company/icons/drafts.svg' %}">
                                 </a>
+                            
                             </li>
                         </ul>
                     </div>
