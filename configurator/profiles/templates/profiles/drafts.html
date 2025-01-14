@@ -3,12 +3,41 @@
 
 <div class="container" style="padding: 5%;">
     <div class="container" style="text-align: center; padding-bottom: 3%;">
+        <h2 class="h2" style="font-size: 32px;">Your saved drafts for <span class="highlight" style="color:#7A9E7E;">FlexiBox</span> </h2>
+    </div>
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th scope="col">Box Height</th>
+            <th scope="col">Box Length</th>
+            <th scope="col">Box Depth</th>
+            <th scope="col">Material</th>
+            <th scope="col">Quantity</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        {% for bxh, bxl, bxd, mat, q in box_items%}
+        <tr>
+            <td scope="row">{{ bxh }}</td>
+            <td>{{ bxl }}</td>
+            <td>{{ bxd }}</td>
+            <td>{{ mat }}</td>
+            <td>{{ q }}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    
+</div>
+
+<div class="container" style="padding: 0% 5% 5% 5%;">
+    <div class="container" style="text-align: center; padding-bottom: 3%;">
         <h2 class="h2" style="font-size: 32px;">Your saved drafts for <span class="highlight" style="color:#7A9E7E;"> FlexiTable</span> </h2>
     </div>
     <table class="table table-hover">
         <thead>
         <tr>
-            <th scope="col">#</th>
             <th scope="col">Body Height</th>
             <th scope="col">Stand Height</th>
             <th scope="col">Sitting Height</th>
@@ -20,45 +49,13 @@
         </tr>
         </thead>
         <tbody>
-        {% for idx, bh, sth, sh, w, l, mat, q in draft_items%}
+        {% for bh, sth, sh, w, l, mat, q in draft_items%}
         <tr>
-            <th scope="row">{{ idx }}</th>
-            <td>{{ bh }}</td>
+            <td scope="row">{{ bh }}</td>
             <td>{{ sth }}</td>
             <td>{{ sh }}</td>
             <td>{{ w }}</td>
             <td>{{ l }}</td>
-            <td>{{ mat }}</td>
-            <td>{{ q }}</td>
-        </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-</div>
-
-<div class="container" style="padding: 0% 5% 5% 5%;">
-    <div class="container" style="text-align: center; padding-bottom: 3%;">
-        <h2 class="h2" style="font-size: 32px;">Your saved drafts for <span class="highlight" style="color:#7A9E7E;">FlexiBox</span> </h2>
-    </div>
-    <table class="table table-hover">
-        <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Box Height</th>
-            <th scope="col">Box Length</th>
-            <th scope="col">Box Depth</th>
-            <th scope="col">Material</th>
-            <th scope="col">Quantity</th>
-
-        </tr>
-        </thead>
-        <tbody>
-        {% for idx, bxh, bxl, bxd, mat, q in box_items%}
-        <tr>
-            <th scope="row">{{ idx }}</th>
-            <td>{{ bxh }}</td>
-            <td>{{ bxl }}</td>
-            <td>{{ bxd }}</td>
             <td>{{ mat }}</td>
             <td>{{ q }}</td>
         </tr>

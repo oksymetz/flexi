@@ -97,7 +97,7 @@ def drafts(request):
         mat = [Material.objects.get(id=r['material_id']) for r in drafts.values()]
         q = [r['quantity'] for r in drafts.values()]
 
-        draft_items = zip(idx, bh, sth, sh, w, l, mat, q)
+        draft_items = zip(bh, sth, sh, w, l, mat, q)
 
         """Data from database for the boxes"""
         boxes = Box.objects.filter(user=request.user).order_by('-id')[:10]
@@ -109,7 +109,7 @@ def drafts(request):
         mat = [Material.objects.get(id=r['material_id']) for r in boxes.values()]
         q = [r['quantity'] for r in boxes.values()]
 
-        box_items = zip(idx, bxh, bxl, bxd, mat, q)
+        box_items = zip( bxh, bxl, bxd, mat, q)
 
         """data for the template"""
         context = {'draft_items': draft_items, 'box_items': box_items}
@@ -132,7 +132,7 @@ def box(request):
         mat = [Material.objects.get(id=r['material_id']) for r in boxes.values()]
         q = [r['quantity'] for r in boxes.values()]
 
-        box_items = zip(idx, bh, sth, sh, mat, q)
+        box_items = zip( bh, sth, sh, mat, q)
         context = {'box_items': box_items}
 
         # Render the box drafts page
