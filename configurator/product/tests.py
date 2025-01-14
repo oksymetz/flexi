@@ -1,7 +1,7 @@
-from django.test import TestCase
-from django.test import TestCase
+from django.test import TestCase, RequestFactory
 from product.models import Box, Material, Product, User
-
+from product.views import configurator, box
+from django.contrib.auth.models import AnonymousUser
 
 class BoxModelTests(TestCase):
     def setUp(self):
@@ -29,6 +29,43 @@ class BoxModelTests(TestCase):
         self.assertEqual(box.user, self.user)
         self.assertEqual(box.quantity, 5)
 
+
+
+class ConfiguratorViewTest(TestCase):
+    def setUp(self):
+        self.factory = RequestFactory()
+        self.user = User.objects.create_user(
+            username='testuser', 
+            password='testpassword'
+        )
+    def test_authenticated_user_access(self):
+        request = self.factory.get('/configurator/')
+        request.user = self.user
+        response = configurator(request)
+        self.assertEqual(response.status_code, 200)
+    def test_unauthenticated_user_access(self):
+        request = self.factory.get('/configurator/')
+        request.user = AnonymousUser()  
+        response = configurator(request)
+        self.assertEqual(response.status_code, 200)
+    
+class BoxViewTest(TestCase):
+    def setUp(self):
+        self.factory = RequestFactory()
+        self.user = User.objects.create_user(
+            username='testuser', 
+            password='testpassword'
+        )
+    def test_authenticated_user_access(self):
+        request = self.factory.get('/box/')
+        request.user = self.user
+        response = configurator(request)
+        self.assertEqual(response.status_code, 200)
+    def test_unauthenticated_user_access(self):
+        request = self.factory.get('/box/')
+        request.user = AnonymousUser()  # Use Django's AnonymousUser for unauthenticated users
+        response = configurator(request)
+        self.assertEqual(response.status_code, 200)        
 
 """from django.test import TestCase, Client
 from django.urls import reverse
