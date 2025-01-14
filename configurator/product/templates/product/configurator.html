@@ -9,13 +9,13 @@
         <p style="color: #a47551af;  font-size: 20px;">The perfect balance of durability, flexibility, and
             style for your workspace.</p>
     </div>
-
+    {% if user.is_authenticated %}
     <!-- Configurator Section -->
     <div class="container" style="display: flex; justify-content: space-between; padding-top: 3%; padding-bottom: 5%;">
         <!-- Boxen nach oben verschoben -->
         <!-- Form Section on the Left -->
         <div class="col-6" style="max-width: 48%; padding-right: 5%;">
-            {% if user.is_authenticated %}
+            
             <!-- Option to Choose Configuration Mode -->
             <div class="form-group">
                 <label for="configMode"><strong>Choose Configuration Mode:</strong></label>
@@ -32,17 +32,17 @@
                     <div class="form-group">
                         <label for="manualDeskHeight"><strong>Desk Height (cm)</strong></label>
                         <input type="number" class="form-control" id="table" name="manualDeskHeight"
-                               placeholder="Enter desk height in cm" required min="1" max="200">
+                               placeholder="Enter desk height in cm" required min="40" max="160">
                     </div>
                     <div class="form-group">
                         <label for="manualDeskDepth"><strong>Desk Depth (cm)</strong></label>
-                        < input type="number" class="form-control" id="table" name="manualDeskDepth"
-                        placeholder="Enter desk depth in cm" required min="1" max="200">
+                        <input type="number" class="form-control" id="table" name="manualDeskDepth"
+                        placeholder="Enter desk depth in cm" required min="40" max="200">
                     </div>
                     <div class="form-group">
                         <label for="manualDeskLength"><strong>Desk Length (cm)</strong></label>
                         <input type="number" class="form-control" id="table" name="manualDeskLength"
-                               placeholder="Enter desk length in cm" required min="1" max="200">
+                               placeholder="Enter desk length in cm" required min="40" max="200">
                     </div>
                     <div class="form-group">
                         <label class="label" for="table">Quantity</label>
@@ -59,17 +59,17 @@
                     <div class="form-group">
                         <label class="label" for="table">Your Body Height (cm)</label>
                         <input type="number" class="form-control" id="table" name="inputBodyHeight"
-                               placeholder="Enter body height in cm" required min="1" max="200">
+                               placeholder="Enter body height in cm" required min="100" max="220">
                     </div>
                     <div class="form-group">
                         <label class="label" for="table">Desk Length (cm)</label>
                         <input type="number" class="form-control" id="table" name="length"
-                               placeholder="Enter length in cm" required min="1" max="200">
+                               placeholder="Enter length in cm" required min="40" max="200">
                     </div>
                     <div class="form-group">
                         <label class="label" for="table">Desk Depth (cm)</label>
                         <input type="number" class="form-control" id="table" name="depth"
-                               placeholder="Enter depth in cm" required min="1" max="200">
+                               placeholder="Enter depth in cm" required min="40" max="200">
                     </div>
                     <div class="form-group">
                         <label class="label" for="table">Quantity</label>
@@ -79,13 +79,7 @@
                     <button type="submit" value="Submit" class="btn btn-save">save draft</button>
                 </form>
             </div>
-            {% else %}
-            <!-- If the user is not logged in, show an error message -->
-            <div style="margin-top: 20px; padding: 20px; border: 1px solid #a47551af; background-color: #f9f9f9; border-radius: 5px; color: #333;">
-                <strong>Error:</strong> You must be logged in to configure and save drafts.
-                <a href="{% url 'login' %}" class="btn btn-save" style="margin-left: 10px;">Login</a>
-            </div>
-            {% endif %}
+            
         </div>
         <!-- Image Section -->
         <div style="max-width: 48%; padding-left: 5%; text-align: center;margin-top: 5px">
@@ -173,6 +167,14 @@
         range of heights at once. as well as choose colours for the size scale that helps with faster visual search.
     </p>
 </div>
+{% else %}
+    <!-- If the user is not logged in, show an error message -->
+    <div style="margin-top: 20px; margin-bottom: 10%; padding: 20px; border: 1px solid #a47551af; background-color: #f9f9f900; border-radius: 10px; color: #A47551;">
+        <strong>Error:</strong> You must be logged in to configure and save drafts.
+        <a href="{% url 'login' %}" class="btn btn-save" style="margin-left: 10px;">log in</a>
+    </div>
+    {% endif %}
+
 
 
 <script>
