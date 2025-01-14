@@ -24,7 +24,7 @@ def manually(request):
             sitting_height=request.POST.get("manualDeskHeight"),  # Sitting height
             width=request.POST.get("manualDeskDepth"),  # Width
             length=request.POST.get("manualDeskLength"),
-            body_height=200,
+            body_height=None,
             material_id=1,  # wood
             product_id=1,  # table
             user_id=request.user.id,
