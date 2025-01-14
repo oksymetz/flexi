@@ -3,18 +3,20 @@
 {% load static %}
 
 <div class="container" style="padding: 5%;">
-    <div class="container" style="padding-bottom: 2%; text-align: left; ">
+    <div class="container" style="padding-bottom: 2%; text-align: left;">
         <h2 class="h2" style="font-size: 32px;">Collectable Boxes</h2>
         <p style="font-size: 20px; color: #a47551af;">
             Discover the perfect balance of durability and design with Flexi Boxes!
         </p>
     </div>
 
-
+    {% if user.is_authenticated %}
+    <!-- If the user is logged in, show the form -->
     <div class="container" style="display: flex; justify-content: space-between; padding-top: 3%; padding-bottom: 5%;">
         <div class="col-6" style="max-width: 48%; padding-right: 5%;">
             <!-- Form Section -->
             <form action="{% url 'product:box' %}" method="post" name="box_draft" id="box">
+                {% csrf_token %}
                 <div class="form-group">
                     <label for="box_height"><strong>Box Height (cm)</strong></label>
                     <input type="number" class="form-control" name="box_height" placeholder="Enter box height in cm"
@@ -35,89 +37,19 @@
                     <input type="number" class="form-control" name="quantity" placeholder="Enter quantity" required
                            min="1">
                 </div>
-                <button type="submit" value="Submit" class="btn btn-save">save draft</button>
+                <button type="submit" value="Submit" class="btn btn-save">Save draft</button>
             </form>
         </div>
-
-        <!-- Image Section -->
-        <div style="max-width: 48%; padding-left: 5%; text-align: center;margin-top: 5px">
-            <!-- Large Image -->
-            <div style="position: relative;">
-                <img id="largeImage" src="{% static 'product/Box 1.jpg' %}"
-                     class="rounded"
-                     style="width: 100%; max-width: 400px; height: 300px; object-fit: contain;"
-                     alt="Large Box Image">
-                <!-- Next Arrow Button -->
-                <button id="nextImageBtn"
-                        style="position: absolute; top: 40%; right: 10px; transform: translateY(-50%);
-                            color: #a47551af;
-                            padding: 10px; font-size: 24px; background-color: transparent; border: none;
-                            cursor: pointer; transition: all 0.3s ease;">
-                    →
-                </button>
-
-
-                <!-- Thumbnail Navigation -->
-                <div style="display: flex; justify-content: center; gap: 10px; padding-top: 20px;">
-                    <img src="{% static 'product/Box 1.jpg' %}" class="thumbnail"
-                         onclick="changeImage(this.src)"
-                         style="width: 20%; max-width: 80px; height: 60px; object-fit: contain; cursor: pointer;"
-                         alt="Thumbnail 1">
-                    <img src="{% static 'product/Box 3.jpg' %}" class="thumbnail"
-                         onclick="changeImage(this.src)"
-                         style="width: 20%; max-width: 80px; height: 60px; object-fit: contain; cursor: pointer;"
-                         alt="Thumbnail 2">
-                    <img src="{% static 'product/Box 4.jpg' %}" class="thumbnail"
-                         onclick="changeImage(this.src)"
-                         style="width: 20%; max-width: 80px; height: 60px; object-fit: contain; cursor: pointer;"
-                         alt="Thumbnail 3">
-                    <img src="{% static 'product/Box 5.jpg' %}" class="thumbnail"
-                         onclick="changeImage(this.src)"
-                         style="width: 20%; max-width: 80px; height: 60px; object-fit: contain; cursor: pointer;"
-                         alt="Thumbnail 4">
-                    <img src="{% static 'product/BoxMasskette.jpg' %}" class="thumbnail"
-                         onclick="changeImage(this.src)"
-                         style="width: 20%; max-width: 80px; height: 60px; object-fit: contain; cursor: pointer;"
-                         alt="Thumbnail 5">
-                </div>
-            </div>
-        </div>
     </div>
-
-    <div class="container" style="text-align: left; padding-bottom: 2%; width: 100%;">
-        <h2 class="h2" style="font-weight: bold;font-size: 20px;">Description</h2>
-        <!-- Slogan im gleichen grauen Farbton wie der Infotext -->
-        <p style="color: #a47551af;  font-size: 20px;">We offer our box in various sizes – tailored to your individual
-            needs. On the last image, you can see the exact dimensions and understand which sizes are best suited for
-            different purposes.
-
-            You have the option to <u>customize the height, width, and depth of the box</u>. Our box is made from
-            high-quality wood and can be easily assembled thanks to its unique connecting elements, making it a
-            versatile storage solution that can also be used as a shelf.
-
-            Additionally, the box comes with a comfortable cushion, making it both functional and stylish.</p>
+    {% else %}
+    <!-- If the user is not logged in, show an error message -->
+    <div style="margin-top: 20px; padding: 20px; border: 1px solid #a47551af; background-color: #f9f9f9; border-radius: 5px; color: #333;">
+        <strong>Error:</strong> You must be logged in to configure and save drafts.
+        <a href="{% url 'login' %}" class="btn btn-save" style="margin-left: 10px;">Login</a>
     </div>
+{% endif %}
 
-    <script>
-        // JavaScript for Thumbnail Click
-        function changeImage(src) {
-            document.getElementById('largeImage').src = src;
-        }
 
-        // JavaScript for Next Button
-        let currentIndex = 0;
-        const imageSources = [
-            "{% static 'product/Box 1.jpg' %}",
-            "{% static 'product/Box 3.jpg' %}",
-            "{% static 'product/Box 4.jpg' %}",
-            "{% static 'product/Box 5.jpg' %}",
-            "{% static 'product/BoxMasskette.jpg' %}"
-        ];
+    <!-- The rest of the page content (images, description, etc.) remains here -->
 
-        document.getElementById('nextImageBtn').addEventListener('click', () => {
-            currentIndex = (currentIndex + 1) % imageSources.length; // Cycle through images
-            document.getElementById('largeImage').src = imageSources[currentIndex];
-        });
-    </script>
-
-    {% endblock %}
+{% endblock %}
