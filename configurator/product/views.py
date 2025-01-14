@@ -19,9 +19,11 @@ def manually(request):
     context = {}
     """View function for login page of site."""
     if request.method == 'POST':
+        desk_height = float(request.POST.get("manualDeskHeight"));
+        stand_height = desk_height *1.3;
         draft = Draft(
-            stand_height=request.POST.get("manualDeskHeight"),  # Stand height
-            sitting_height=request.POST.get("manualDeskHeight"),  # Sitting height
+            stand_height=stand_height,  # Stand height
+            sitting_height=desk_height,  # Sitting height
             width=request.POST.get("manualDeskDepth"),  # Width
             length=request.POST.get("manualDeskLength"),
             body_height=None,
