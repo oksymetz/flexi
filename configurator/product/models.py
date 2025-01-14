@@ -1,12 +1,19 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.core.exceptions import ValidationError
+from django.db import models
+
+def validate_range(value):
+    if value < 0 or value > 200:
+        raise ValidationError(f"Value must be between 0 and 200. Given: {value}")
+
 
 # Create your models here.
 class Material(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=255)
     material_components = models.TextField()                           # Material components (long text)
-    thickness = models.FloatField()                                    # Thickness as a float
+    thickness = models.FloatField(default=1.0)                                    # Thickness as a float
 
     def __str__(self):
         return self.name
@@ -65,9 +72,9 @@ class ProductComponent(models.Model):
 
 class Draft(models.Model):
     id = models.AutoField(primary_key=True)  # PK
-    body_height = models.FloatField()             # Body height
+    body_height = models.FloatField(null=True)             # Body height
     stand_height = models.FloatField()            # Stand height
-    sitting_height = models.FloatField()          # Sitting height
+    sitting_height = models.FloatField()
     width = models.FloatField()                   # Width
     length = models.FloatField()                  # Length
     material = models.ForeignKey(
@@ -82,6 +89,32 @@ class Draft(models.Model):
         User,
         on_delete=models.CASCADE
     )
+    quantity = models.PositiveIntegerField()
 
     def __str__(self):
         return f"Draft {self.id}"
+
+class Box(models.Model):
+    id = models.AutoField(primary_key=True)
+    box_height = models.FloatField(validators=[validate_range])
+    box_length = models.FloatField(validators=[validate_range])
+    box_depth =  models.FloatField(validators=[validate_range])
+
+    material = models.ForeignKey(
+        Material,
+        on_delete=models.CASCADE
+    )  # FK to Material
+    product = models.ForeignKey(
+        Product,
+        on_delete=models.CASCADE
+    )  # FK to Product
+    user = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE
+    )
+    quantity = models.PositiveIntegerField()
+
+    def __str__(self):
+        return f"Box {self.id}"
+
+

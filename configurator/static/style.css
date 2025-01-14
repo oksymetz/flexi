@@ -24,6 +24,10 @@ body, html {
     position: sticky !important;
 }
 
+.dropdown-menu {
+    color: #A47551;
+}
+
 .h2 {
     font-size: 40px;
     font-weight: 600 !important;

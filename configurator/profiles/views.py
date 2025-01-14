@@ -5,8 +5,7 @@ from django.contrib.auth import login as auth_login
 from django.contrib import messages
 from django.contrib.auth.models import User
 
-
-from product.models import Draft, Material
+from product.models import Draft, Material, Box
 from profiles.models import Customer
 
 
@@ -22,7 +21,7 @@ def index(request):
         context["address"] = address
         return render(request, 'profiles/profile.html', context=context)
 
-    # Render the HTML template index.html with the data in the context variable
+    # Redirect to login page if not authenticated
     return redirect("/profile/login")
 
 
@@ -38,21 +37,20 @@ def login(request):
             auth_login(request, user)
             return redirect("/profile/")
 
-    # Render the HTML template index.html with the data in the context variable
+    # Render the login page
     return render(request, 'profiles/login.html', context=context)
 
 
 def log_out(request):
-    context = {}
+    """View function to log out a user."""
     if request.user.is_authenticated:
         logout(request)
-
     return redirect('/profile/')
+
 
 @csrf_exempt
 def signin(request):
     """View function for signin page of site."""
-
     context = {}
     if request.method == 'POST':
         username = request.POST["username"]
@@ -80,14 +78,14 @@ def signin(request):
         auth_login(request, new_user)
         return redirect("/profile/")
 
-    # Render the HTML template index.html with the data in the context variable
+    # Render the signin page
     return render(request, 'profiles/signin.html', context=context)
 
 
 def drafts(request):
-    """View function for signin page of site."""
-
+    """View function for drafts page of site."""
     if request.user.is_authenticated:
+        """Data from database for the tables"""
         drafts = Draft.objects.filter(user=request.user).order_by('-id')[:10]
 
         idx = [r['id'] for r in drafts.values()]
@@ -96,13 +94,48 @@ def drafts(request):
         sh = [r['sitting_height'] for r in drafts.values()]
         w = [r['width'] for r in drafts.values()]
         l = [r['length'] for r in drafts.values()]
-        mat = [Material.objects.get(id=r['material_id'])  for r in drafts.values()]
+        mat = [Material.objects.get(id=r['material_id']) for r in drafts.values()]
+        q = [r['quantity'] for r in drafts.values()]
 
-        items = zip(idx, bh, sth, sh, w, l, mat)
-        context = {'items': items}
+        draft_items = zip(idx, bh, sth, sh, w, l, mat, q)
 
-        # Render the HTML template index.html with the data in the context variable
+        """Data from database for the boxes"""
+        boxes = Box.objects.filter(user=request.user).order_by('-id')[:10]
+
+        idx = [r['id'] for r in boxes.values()]
+        bxh = [r['box_height'] for r in boxes.values()]
+        bxl = [r['box_length'] for r in boxes.values()]
+        bxd = [r['box_depth'] for r in boxes.values()]
+        mat = [Material.objects.get(id=r['material_id']) for r in boxes.values()]
+        q = [r['quantity'] for r in boxes.values()]
+
+        box_items = zip(idx, bxh, bxl, bxd, mat, q)
+
+        """data for the template"""
+        context = {'draft_items': draft_items, 'box_items': box_items}
+
+        # Render the drafts page
         return render(request, 'profiles/drafts.html', context=context)
     else:
-        context = {}
+        return redirect("/profile/login")
+
+
+def box(request):
+    """View function for displaying box drafts."""
+    if request.user.is_authenticated:
+        boxes = Box.objects.filter(user=request.user).order_by('-id')[:10]
+
+        idx = [r['id'] for r in boxes.values()]
+        bh = [r['box_height'] for r in boxes.values()]
+        sth = [r['box_length'] for r in boxes.values()]
+        sh = [r['box_depth'] for r in boxes.values()]
+        mat = [Material.objects.get(id=r['material_id']) for r in boxes.values()]
+        q = [r['quantity'] for r in boxes.values()]
+
+        box_items = zip(idx, bh, sth, sh, mat, q)
+        context = {'box_items': box_items}
+
+        # Render the box drafts page
+        return render(request, 'profiles/drafts.html', context=context)
+    else:
         return redirect("/profile/login")

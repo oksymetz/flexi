@@ -1,22 +1,22 @@
 {% extends 'company/base.html' %}
 {% block content %}
+{% load static %}
 
-<!-- <header>
-    <h1>Products</h1>
-</header> -->
-<div class="container" style="padding: 5%;">
-    <div class="container" style="text-align: center; padding-bottom: 3%;" >
-        <h1 style="color: #7A9E7E;">Draft successfully saved.</h2>
-        <h4 style="color: #7A9E7E;">You can find your drafts in your <a href="{% url 'profile:drafts' %}" style="color: #7A9E7E;"> profile</a>.</h2>
+<div class="container" class="container" style="padding: 5%; display: flex; align-items: center; justify-content: space-between; font-family: 'Helvetica Neue', sans-serif; color: #7A9E7E;">
+    <!-- Textbereich -->
+    <div style="flex: 1; max-width: 60%; padding-right: 20px;">
+        <h1 style="font-size: 32px; font-weight: bold; color: #7A9E7E;">Draft successfully saved.</h1>
+        <h3 style="font-size: 20px; font-weight: normal; color: #7A9E7E;">Thank you very much for your interest in our product.</h3>
+        <h4 style="font-size: 20px; font-weight: normal; margin-top: 20px; line-height: 1.8; color: #A47551;">
+            Would you like to review your draft? You can find your drafts in your
+            <a href="{% url 'profile:drafts' %}" style="color: #A47551; text-decoration: underline;">profile</a>.
+        </h4>
     </div>
-    <!-- <div class="container row">
-        <div class="col-6" style="text-align: center;">
-            <h3><a class="h2" href="{% url 'product:box' %}">Connectable Boxes</a></h3>
-        </div>
-        <div class="col-6" style="text-align: center;">
-            <h3><a class="h2" href="{% url 'product:configurator' %}">Table Configurator</a></h3>
-        </div>
-    </div> -->
+
+    <!-- Bildbereich -->
+    <div style="flex: 1; max-width: 45%; text-align: center;">
+        <img src="{% static 'company/IMG_0721.png' %}" alt="Decorative Image" style="width: 80%;">
+    </div>
 </div>
 
 {% endblock %}
